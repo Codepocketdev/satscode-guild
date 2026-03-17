@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SatsCode Guild — Apply to Join</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #C9A84C;
+      --gold-dark:   #8B6010;
+      --gold-light:  #E8C96A;
+      --bg:          #0D0B06;
+      --card:        #111009;
+      --card2:       #161209;
+      --cream:       #F5ECD7;
+      --cream-dim:   rgba(245,236,215,0.72);
+      --border:      rgba(201,168,76,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeUp    { from { opacity:0; transform:translateY(28px) } to { opacity:1; transform:translateY(0) } }
+    @keyframes pulse     { 0%,100% { opacity:.3; transform:translateX(-50%) scaleX(1) } 50% { opacity:.7; transform:translateX(-50%) scaleX(1.1) } }
+    @keyframes glow      { 0%,100% { opacity:.25 } 50% { opacity:.6 } }
+    @keyframes scrollBob { 0%,100% { transform:translateY(0) } 50% { transform:translateY(6px) } }
+    @keyframes shimmer   { 0% { background-position:200% center } 100% { background-position:-200% center } }
+
+    .land-btn {
+      transition: all .3s ease;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+    }
+    .land-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+    .btn-gold-land { position: relative; overflow: hidden; }
+    .btn-gold-land::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease infinite;
+      border-radius: 10px;
+    }
+
+    .val-card { transition: all .35s ease; border-radius: 10px; }
+    .val-card:hover {
+      border-color: rgba(201,168,76,0.4) !important;
+      background: rgba(201,168,76,0.03) !important;
+      transform: translateY(-5px) !important;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: center;
+      margin: 22px 0;
+    }
+    .divider-line-l { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dark)); }
+    .divider-line-r { width: 60px; height: 1px; background: linear-gradient(to left,  transparent, var(--gold-dark)); }
+    .divider-diamond { width: 6px; height: 6px; background: var(--gold-dark); transform: rotate(45deg); flex-shrink: 0; }
+
+    /* ── Corner brackets ── */
+    .corner { position: fixed; width: 44px; height: 44px; border-style: solid; border-color: rgba(201,168,76,0.16); }
+    .corner-tl { top: 24px; left: 24px;  border-width: 1px 0 0 1px; }
+    .corner-tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+    .corner-bl { bottom: 24px; left: 24px;  border-width: 0 0 1px 1px; }
+    .corner-br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+
+    /* ── Sections ── */
+    section { position: relative; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Corner brackets -->
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+
+<!-- ── HERO ── -->
+<section style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:100px 28px 80px; overflow:hidden;">
+
+  <div style="position:absolute; top:40%; left:50%; transform:translate(-50%,-50%); width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,76,.055) 0%,transparent 65%); pointer-events:none;"></div>
+
+  <p style="font-family:'Montserrat',sans-serif; font-size:0.8rem; font-weight:500; letter-spacing:0.45em; color:var(--gold-dark); text-transform:uppercase; margin-bottom:32px; animation:fadeUp .9s ease both;">
+    — Est. 2025 · The Guild of Sovereign Builders —
+  </p>
+
+  <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(3.5rem,11vw,6.5rem); font-weight:700; line-height:.95; letter-spacing:.04em; color:var(--cream); margin-bottom:10px; animation:fadeUp .9s ease .2s both;">
+    Sats<span style="color:var(--gold)">Code</span>
+  </h1>
+
+  <p style="font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.45em; color:var(--gold-dark); text-transform:uppercase; margin-bottom:8px; animation:fadeUp .9s ease .3s both;">
+    The Bitcoin Builders Guild
+  </p>
+
+  <div class="divider" style="animation:fadeUp .9s ease .35s both; opacity:0; animation-fill-mode:both;">
+    <div class="divider-line-l"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line-r"></div>
+  </div>
+
+  <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,3.5vw,1.5rem); font-style:italic; font-weight:300; color:var(--cream-dim); max-width:580px; line-height:1.85; margin:0 auto 48px; animation:fadeUp .9s ease .4s both;">
+    A sovereign guild for those who build on Bitcoin, Lightning, Nostr, Cashu and Fedimint — in public, together, without permission.
+  </p>
+
+  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeUp .9s ease .5s both;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScFL857vPO-LuYaNCwPvUcn_qoKDio4WhvOaQVIiE2CK_-13A/viewform?usp=dialog" target="_blank"
+      class="land-btn btn-gold-land"
+      style="font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--bg); background:linear-gradient(135deg,var(--gold),var(--gold-light)); padding:16px 48px; box-shadow:0 6px 36px rgba(201,168,76,.3); display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+      Apply to Join
+    </a>
+    <a href="https://chat.whatsapp.com/CdGqNyA9qz5HtSfjJlMAOG?mode=gi_t" target="_blank"
+      class="land-btn"
+      style="font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--cream); background:transparent; border:1px solid rgba(201,168,76,.35); padding:16px 48px; display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+      Join WhatsApp Group
+    </a>
+  </div>
+
+  <p style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:rgba(201,168,76,.28); margin-top:20px; letter-spacing:0.1em; animation:fadeUp .9s ease .6s both;">
+    // Build in Public · Earn in Sats · Own Your Identity
+  </p>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; animation:glow 2.5s ease 2s infinite;">
+    <div style="width:1px; height:36px; background:linear-gradient(to bottom,rgba(201,168,76,.4),transparent); animation:scrollBob 2s ease-in-out infinite;"></div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    <span style="font-family:'Montserrat',sans-serif; font-size:0.55rem; font-weight:500; letter-spacing:0.4em; color:rgba(201,168,76,.35); text-transform:uppercase;">Scroll</span>
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section style="padding:110px 28px; border-top:1px solid var(--border);">
+  <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:400px; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); opacity:.2; animation:pulse 4s ease-in-out infinite;"></div>
+  <div style="max-width:780px; margin:0 auto; text-align:center;">
+    <div class="reveal">
+      <p style="font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.5em; color:var(--gold-dark); text-transform:uppercase; margin-bottom:18px;">
+        — What is the Guild —
+      </p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,6vw,4rem); font-weight:700; color:var(--cream); line-height:1.1; margin-bottom:10px;">
+        Build the tools that<br/>
+        <span style="color:var(--gold); font-style:italic;">free the world.</span>
+      </h2>
+      <div class="divider"><div class="divider-line-l"></div><div class="divider-diamond"></div><div class="divider-line-r"></div></div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,2.8vw,1.3rem); font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.95; margin-bottom:24px;">
+        SatsCode is a build-in-public community for developers who want real exposure to decentralized protocols. No gatekeeping. No corporate agenda. Just builders shipping, testing each other's work and learning on the bleeding edge of open money and open communication.
+      </p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,2.8vw,1.3rem); font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.95;">
+        We build onramps, offramps, wallets, social tools and education platforms — anything that moves value or information without permission.
+      </p>
+      <!-- Protocol tags -->
+      <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:32px;">
+        <span style="padding:5px 16px; border-radius:20px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.18); font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em;">Lightning</span>
+        <span style="padding:5px 16px; border-radius:20px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.18); font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em;">Bitcoin</span>
+        <span style="padding:5px 16px; border-radius:20px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.18); font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em;">Nostr</span>
+        <span style="padding:5px 16px; border-radius:20px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.18); font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em;">Cashu</span>
+        <span style="padding:5px 16px; border-radius:20px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.18); font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em;">Fedimint</span>
+        <span style="padding:5px 16px; border-radius:20px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.18); font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em;">Onramps + Offramps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MANIFESTO QUOTE ── -->
+<section style="padding:80px 28px; background:rgba(201,168,76,.03); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="reveal" style="max-width:680px; margin:0 auto; text-align:center;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8B6010" stroke-width="1.5" style="margin:0 auto 18px; display:block; opacity:.7;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,4vw,1.9rem); font-style:italic; font-weight:300; color:var(--cream); line-height:1.75; letter-spacing:.02em;">
+      "The most subversive act in the twenty-first century is to build tools that make central authority irrelevant."
+    </p>
+    <div class="divider"><div class="divider-line-l"></div><div class="divider-diamond"></div><div class="divider-line-r"></div></div>
+    <p style="font-family:'Montserrat',sans-serif; font-size:0.7rem; font-weight:500; letter-spacing:0.35em; color:var(--gold-dark); text-transform:uppercase;">
+      — The SatsCode Guild Manifesto
+    </p>
+  </div>
+</section>
+
+<!-- ── WHAT YOU GET ── -->
+<section style="padding:110px 28px; border-bottom:1px solid var(--border);">
+  <div style="max-width:1020px; margin:0 auto;">
+    <div class="reveal" style="text-align:center; margin-bottom:68px;">
+      <p style="font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.5em; color:var(--gold-dark); text-transform:uppercase; margin-bottom:16px;">
+        — What You Get —
+      </p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:700; color:var(--cream);">
+        The Guild's Offer
+      </h2>
+      <div class="divider"><div class="divider-line-l"></div><div class="divider-diamond"></div><div class="divider-line-r"></div></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;">
+
+      <div class="reveal val-card" style="background:var(--card2); border:1px solid var(--border); padding:32px 26px; position:relative;">
+        <span style="position:absolute; top:10px; left:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <span style="position:absolute; bottom:10px; right:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:rgba(201,168,76,.2); line-height:1; margin-bottom:14px;">I</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; color:var(--cream); margin-bottom:14px; letter-spacing:0.04em;">Build in Public</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.8;">Share your progress weekly. Accountability from people who actually understand what you are building.</div>
+      </div>
+
+      <div class="reveal val-card" style="background:var(--card2); border:1px solid var(--border); padding:32px 26px; position:relative;">
+        <span style="position:absolute; top:10px; left:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <span style="position:absolute; bottom:10px; right:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:rgba(201,168,76,.2); line-height:1; margin-bottom:14px;">II</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; color:var(--cream); margin-bottom:14px; letter-spacing:0.04em;">Real Feedback</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.8;">Test each other's products. Honest technical reviews from builders working on the same protocols.</div>
+      </div>
+
+      <div class="reveal val-card" style="background:var(--card2); border:1px solid var(--border); padding:32px 26px; position:relative;">
+        <span style="position:absolute; top:10px; left:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <span style="position:absolute; bottom:10px; right:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:rgba(201,168,76,.2); line-height:1; margin-bottom:14px;">III</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; color:var(--cream); margin-bottom:14px; letter-spacing:0.04em;">Protocol Exposure</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.8;">Hands-on experience with Lightning, Nostr, Cashu and Fedimint — the real decentralized stack.</div>
+      </div>
+
+      <div class="reveal val-card" style="background:var(--card2); border:1px solid var(--border); padding:32px 26px; position:relative;">
+        <span style="position:absolute; top:10px; left:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <span style="position:absolute; bottom:10px; right:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:rgba(201,168,76,.2); line-height:1; margin-bottom:14px;">IV</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; color:var(--cream); margin-bottom:14px; letter-spacing:0.04em;">Sat Rewards</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.8;">Bounties, zaps and peer recognition for shipping. Value flows to builders who contribute.</div>
+      </div>
+
+      <div class="reveal val-card" style="background:var(--card2); border:1px solid var(--border); padding:32px 26px; position:relative;">
+        <span style="position:absolute; top:10px; left:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <span style="position:absolute; bottom:10px; right:10px; color:var(--gold); font-size:0.4rem; opacity:.4;">◆</span>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:rgba(201,168,76,.2); line-height:1; margin-bottom:14px;">V</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; color:var(--cream); margin-bottom:14px; letter-spacing:0.04em;">Founder Network</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.8;">Connect with Bitcoin founders and builders across Africa and globally through events and Nostr.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GUILD CODE ── -->
+<section style="padding:110px 28px; border-bottom:1px solid var(--border);">
+  <div style="max-width:780px; margin:0 auto; text-align:center;">
+    <div class="reveal">
+      <p style="font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.5em; color:var(--gold-dark); text-transform:uppercase; margin-bottom:18px;">
+        — Guild Code —
+      </p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:700; color:var(--cream); margin-bottom:10px;">
+        The Rules of the <span style="color:var(--gold); font-style:italic;">Guild</span>
+      </h2>
+      <div class="divider"><div class="divider-line-l"></div><div class="divider-diamond"></div><div class="divider-line-r"></div></div>
+      <div style="text-align:left; margin-top:16px;">
+        <div style="display:grid; gap:14px;">
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:var(--card2); border:1px solid var(--border); border-radius:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); flex-shrink:0; padding-top:2px;">//</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.6;">Ship something every week — no lurking</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:var(--card2); border:1px solid var(--border); border-radius:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); flex-shrink:0; padding-top:2px;">//</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.6;">Test and give honest feedback on other builders' work</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:var(--card2); border:1px solid var(--border); border-radius:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); flex-shrink:0; padding-top:2px;">//</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.6;">No price talk, no hype, no spam</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:var(--card2); border:1px solid var(--border); border-radius:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); flex-shrink:0; padding-top:2px;">//</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.6;">Bitcoin and open protocols only</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:var(--card2); border:1px solid var(--border); border-radius:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); flex-shrink:0; padding-top:2px;">//</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.6;">Respect every builder regardless of level</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:var(--card2); border:1px solid var(--border); border-radius:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--gold); flex-shrink:0; padding-top:2px;">//</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; font-style:italic; font-weight:300; color:var(--cream-dim); line-height:1.6;">Build in public or don't join</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section style="padding:110px 28px; text-align:center; overflow:hidden;">
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 70%); pointer-events:none;"></div>
+  <div class="reveal">
+    <p style="font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.5em; color:var(--gold-dark); text-transform:uppercase; margin-bottom:18px;">
+      — The Guild Awaits —
+    </p>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,6vw,4.2rem); font-weight:700; color:var(--cream); line-height:1.1; margin-bottom:10px;">
+      Are you ready<br/>
+      <span style="color:var(--gold); font-style:italic;">to build?</span>
+    </h2>
+    <div class="divider"><div class="divider-line-l"></div><div class="divider-diamond"></div><div class="divider-line-r"></div></div>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,2.8vw,1.3rem); font-style:italic; font-weight:300; color:var(--cream-dim); max-width:500px; margin:0 auto 44px; line-height:1.9;">
+      Applications are open. We are looking for the first 20 members who are serious about shipping on decentralized protocols.
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScFL857vPO-LuYaNCwPvUcn_qoKDio4WhvOaQVIiE2CK_-13A/viewform?usp=dialog" target="_blank"
+        class="land-btn btn-gold-land"
+        style="font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--bg); background:linear-gradient(135deg,var(--gold),var(--gold-light)); padding:16px 48px; box-shadow:0 6px 40px rgba(201,168,76,.3); display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+        Apply to Join
+      </a>
+      <a href="https://chat.whatsapp.com/CdGqNyA9qz5HtSfjJlMAOG?mode=gi_t" target="_blank"
+        class="land-btn"
+        style="font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--cream); background:transparent; border:1px solid rgba(201,168,76,.35); padding:16px 48px; display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+        Join WhatsApp Group
+      </a>
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:rgba(201,168,76,.22); letter-spacing:0.1em;">
+      // Powered by Nostr · Verified by Lightning · Recorded on Bitcoin
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer style="text-align:center; padding:32px 28px; border-top:1px solid var(--border);">
+  <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--cream); margin-bottom:10px; letter-spacing:0.06em;">
+    Sats<span style="color:var(--gold)">Code</span>
+  </div>
+
+  <div style="font-family:'JetBrains Mono',monospace; font-size:0.42rem; color:rgba(201,168,76,0.15); letter-spacing:0.15em;">
+    // BITCOIN BUILDERS GUILD · EST. 2025 · BITCOIN ONLY
+  </div>
+</footer>
+
+<script>
+  // Intersection observer for scroll reveals
+  const reveals = document.querySelectorAll('.reveal')
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 0.1) + 's'
+        e.target.classList.add('visible')
+      }
+    })
+  }, { threshold: 0.1 })
+  reveals.forEach(r => obs.observe(r))
+</script>
+
+</body>
+</html>
+
